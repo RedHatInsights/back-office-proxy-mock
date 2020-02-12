@@ -19,8 +19,27 @@ Visit any of the supported endpoints below, now available on `http://localhost:8
 
 ### Generating Fake Data
 
-Populate `data/users.json` with the following:
+User data exists by default in `data/users.json`, but to populate new/different,
+use the following:
 
 ```
+$ gem install faker
 $ ./bin/populate_users.rb
 ```
+
+### Integrating with RBAC
+
+One usecase is to have this mock running for RBAC to use locally. Setting the
+following in the `.env` file in [RBAC](https://github.com/RedHatInsights/insights-rbac/)
+will allow for this:
+
+```
+PRINCIPAL_PROXY_SERVICE_PROTOCOL=http
+PRINCIPAL_PROXY_SERVICE_HOST=localhost
+PRINCIPAL_PROXY_SERVICE_PORT=8090
+PRINCIPAL_PROXY_SERVICE_PATH=/insights-services
+PRINCIPAL_PROXY_SERVICE_SSL_VERIFY=False
+```
+
+Currently this will support being able to use the `/api/rbac/v1/principals/`
+GET endpoint.
