@@ -14,10 +14,17 @@ users = 50.times.map do
     last_name: last_name,
     email: Faker::Internet.email(name: full_name, separators: '.', domain: 'example'),
     is_active: true,
-    locale: 'en_US'
+    locale: 'en_US',
+    is_org_admin: Faker::Boolean.boolean(true_ratio: 0.2),
+    is_internal: Faker::Boolean.boolean(true_ratio: 0.5)
   }
 end
 
-File.open('./data/users.json', 'w') do |f|
+users = {
+  users: users,
+  userCount: 50
+}
+
+File.open('./data/usersv2.json', 'w') do |f|
   f.write(JSON.pretty_generate(users))
 end
