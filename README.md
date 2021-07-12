@@ -11,20 +11,27 @@ Visit any of the supported endpoints below, now available on `http://localhost:8
 
 ### Supported Endpoints
 
-  - Users for an account: `http://localhost:8090/insights-services/v1/accounts/:id/users` - note that the account ID does not matter in this case.
+  - Status:
+    - `http://localhost:8090/insights-services/` - nothing is gonna be resulted
+  - Users for an account (V1 endpoint):
+    - `http://localhost:8090/insights-services/v1/accounts/:id/users` - note that the account ID does not matter in this case.
+  - Users for an account (V2 endpoint):
+    - `http://localhost:8090/insights-services/v2/accounts/:id/users` - note that the account ID does not matter in this case.
+  - Details for a user: 
+    - `http://localhost:8090/insights-services/v1/auth`
 
 ### Future Endpoints
 
-  - Details for a user: `http://localhost:8090/insights-services/v1/auth`
+  - https://backoffice-proxy-insights-services.ext.us-east.aws.preprod.paas.redhat.com/docs/#/
 
 ### Generating Fake Data
 
-User data exists by default in `data/users.json`, but to populate new/different,
+User data exists by default in `data/{files}.json`, but to populate new/different,
 use the following:
 
 ```
 $ gem install faker
-$ ./bin/populate_users.rb
+$ ./bin/populate_{name}.rb
 ```
 
 ### Integrating with RBAC
